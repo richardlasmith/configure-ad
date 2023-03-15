@@ -6,10 +6,6 @@
 This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 
-<h2>Video Demonstration</h2>
-
-- ### [YouTube: How to Deploy on-premises Active Directory within Azure Compute](https://www.youtube.com)
-
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
@@ -43,7 +39,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/dc9GXYK.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Open Azure, Search VM, Create new VM, then create new Resource Group. Name the resource group AD-Lab (Active Directory). Name the Virtural Machine, "DC-1 (Domain Controller), region should be in the same location as Client-1. For image, use Windows Server 2022, and use 2 vcpu for processing speed and performance. Create a user name and pw for DC-1. Create the second VM using the name client-1. 
+Open Azure, Search VM, Create a new VM, then create a new Resource Group. Name the resource group AD-Lab (Active Directory). Name the Virtual Machine, "DC-1 (Domain Controller), and the region should be in the exact location as Client-1. For image, use Windows Server 2022 and two vcpu for processing speed and performance. Create a user name and PW for DC-1. Create the second VM using the name client-1. 
 </p>
 <br />
 
@@ -51,7 +47,7 @@ Open Azure, Search VM, Create new VM, then create new Resource Group. Name the r
 <img src="https://i.imgur.com/PrcZCvL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Set the Domain Controller NIC Private IP Address to be Static. Do this by going to DC-1/ Networking/ IP Confguration/ Change from Dynamic to Static. This means the IP Address will never change. Make sure both DC-1 and Client-1 are in the same DC-1-vnet/default
+Set the Domain Controller NIC Private IP Address to be Static. Do this by going to DC-1/ Networking/ IP Configuration/ Change from Dynamic to Static. This means the IP Address will never change. Make sure both DC-1 and Client-1 are in the same DC-1-vent/default
 </p>
 <br />
 
@@ -63,7 +59,7 @@ Set the Domain Controller NIC Private IP Address to be Static. Do this by going 
 <img src="https://i.imgur.com/dLyLmCB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Ensure connectivity between the Client VM and Domain Controller. Log into client-1 with Remote Desktop and ping DC-1's Private IP address with ping -t<ip address> perpetual ping). Then log into the Domain Controller and enable ICNMPv4 in on the local windows Firewall. Check back at client-1 to see the ping succeed. Open DC-1 and configure Firewall to allow successful ping. Go to start type, wf.msc, inbound rules, sort by protocol, find ICMP4 and enable. 
+Ensure connectivity between the Client VM and Domain Controller. Log into client-1 with Remote Desktop and ping DC-1's Private IP address with ping -t<ip address> perpetual ping). Then log into the Domain Controller and enable ICNMPv4 on the local windows Firewall. Check back at client-1 to see the ping succeed. Open DC-1 and configure Firewall to allow successful ping. Go to start type, wf. msc, inbound rules, sort by protocol, find ICMP4, and enable. 
 </p>
 <br />
 
@@ -71,7 +67,7 @@ Ensure connectivity between the Client VM and Domain Controller. Log into client
 <img src="https://i.imgur.com/OodVW11.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Install Active Directory on DC-1. Go to Add roles and features/ Active Directory Domain Services, once installation is completed, on the top right, click the yellow caution flag and promtion to doamin controller, add a new forest (Name domain) mydomain.com, create password. 
+Install Active Directory on DC-1. Go to Add roles and features/ Active Directory Domain Services. Once installation is completed, click the yellow caution flag and promotion to the domain controller on the top right, add a new forest (Name domain) mydomain.com, and create a password. 
 </p>
 <br />
 
@@ -79,7 +75,7 @@ Install Active Directory on DC-1. Go to Add roles and features/ Active Directory
 <img src="https://i.imgur.com/eGNTTzJ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Now that DC-1 VM has restarted, Create a couple of Organizational Unit (folder). (1) called employees, (2) called admin. We will now create a Admin user called Jane Doe. Set a password and uncheck the create new pw at login. 
+Now that DC-1 VM has re-started, Create a couple of Organizational Units (folder). (1) called employees, (2) called admin. We will now create an Admin user called Jane Doe. Set a password and uncheck the create new PW at login. 
 </p>
 <br />
 
@@ -87,7 +83,7 @@ Now that DC-1 VM has restarted, Create a couple of Organizational Unit (folder).
 <img src="https://i.imgur.com/mCgq8UK.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Now assign Jane Doe to the Security Group Domain Admin group. 
+Assign Jane Doe to the Security Group Domain Admin group. 
 </p>
 <br />
 
@@ -99,7 +95,7 @@ Now assign Jane Doe to the Security Group Domain Admin group.
 <img src="https://i.imgur.com/neBpcNA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Log out of labuser and re log back in with Jane_Admin 
+Log out of labuser and re-log back in with Jane_Admin.
 </p>
 <br />
 
@@ -115,39 +111,37 @@ Log out of labuser and re log back in with Jane_Admin
 <img src="https://i.imgur.com/CzlBtHG.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-We will join Client-1 to Domain. Let's set client-1 DNS setting to the DC's private IP address, and log into client-1 with Jane_adamin. 
+Join Client-1 to Domain. Set the client-1 DNS setting to the DC's private IP address, and log into client-1 with Jane_admin. 
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Xe2xnCz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Set up so all domain users are able to remote log in Client-1.  Client-1 / System properties/ Remote Desktop / Select users that can remotely log in / Add Domain Users (Built in Group).
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/SQPTV6s.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Create a bunch of additional users and attempt to log into client-1 with one of the users --->Login to DC-1 as jane_admin --->Open PowerShell_ise as an administrator. Create a new File and paste the contents of the script into it (https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1) --->Run the script and observe the accounts being created. When finished, open ADUC and observe the accounts in the appropriate OU attempt to log into Client-1 with one of the accounts (take note of the password in the script). 
+
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/9TAvaBf.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/xLuF0Jm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Attempt to log into Client-1 with one of the accounts (take note of the password in the script)
 </p>
 <br />
+
+ACTIVE DIRECTORY LAB IS FINISHED!
