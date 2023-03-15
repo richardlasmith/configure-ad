@@ -76,6 +76,59 @@ Install Active Directory on DC-1. Go to Add roles and features/ Active Directory
 <br />
 
 <p>
+<img src="https://i.imgur.com/eGNTTzJ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Now that DC-1 VM has restarted, Create a couple of Organizational Unit (folder). (1) called employees, (2) called admin. We will now create a Admin user called Jane Doe. Set a password and uncheck the create new pw at login. 
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/mCgq8UK.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Now assign Jane Doe to the Security Group Domain Admin group. 
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/DxwSlos.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/neBpcNA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Log out of labuser and re log back in with Jane_Admin 
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/LIIj3mZ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/heeIW2Q.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/CzlBtHG.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+We will join Client-1 to Domain. Let's set client-1 DNS setting to the DC's private IP address, and log into client-1 with Jane_adamin. 
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+<br />
+
+
+<p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
